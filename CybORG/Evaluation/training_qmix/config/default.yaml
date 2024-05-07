@@ -1,0 +1,32 @@
+scheme:
+  n_agents: 5
+  n_actions: 242
+  obs_shape: 210
+  state_shape: 1050
+
+config:
+  agent:
+    # rnn_hidden_dim: 64
+    activation: "relu"
+    hidden_layers: [64]
+  epsilon_schedule:
+    start: 1
+    finish: 0.05
+    anneal_time: 200_000
+  mixer:
+    mixing_embed_dim: 32
+  timesteps: 750_000
+  batch_size: 32
+  buffer_size: 64
+  lr: 0.00075
+  alpha: 0.99
+  eps: 0.00001
+  gamma: 0.99
+  sync_freq: 150
+  learn_freq: 10
+  log_freq: 500
+  grad_norm_clip: 8
+
+  save_model: True
+  save_count: 4
+  token: "qmix"

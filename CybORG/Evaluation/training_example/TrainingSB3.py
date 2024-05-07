@@ -24,7 +24,7 @@ from sb3_contrib import MaskablePPO
 from sb3_contrib.common.maskable.policies import MaskableActorCriticPolicy
 from sb3_contrib.common.wrappers import ActionMasker
 
-from typing import TypeVar, cast
+from typing import TypeVar, cast, Optional
 
 AgentID = TypeVar("AgentID", bound=str)
 ObsType = TypeVar("ObsType", bound=T.Tensor)
@@ -43,7 +43,7 @@ class GenericPzShim(ParallelEnv):
         super().__init__()
         self.env = env
 
-    def reset(self, seed: int | None = None, *args, **kwargs):
+    def reset(self, seed : Optional[int] = None, *args, **kwargs):
         return self.env.reset(seed=seed)
 
     def step(self, *args, **kwargs):
